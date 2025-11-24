@@ -4,6 +4,8 @@ import { Route, Router, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import Product from "./pages/Allproduct";
 import Homepage from "./pages/homepage";
+import About from "./pages/Aboutss";
+import Ourblog from "./pages/Ourblog";
 
 const App = () => {
   return (
@@ -12,6 +14,8 @@ const App = () => {
         <Route path="" element={<Layout />}>
           <Route path="/homepage" element={<Homepage />} />
           <Route path="/product" element={<Product />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/ourblog" element={<Ourblog />} />
         </Route>
       </Routes>
     </div>

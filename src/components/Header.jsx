@@ -7,12 +7,14 @@ import { FaRegHeart } from "react-icons/fa";
 import { SlBasket } from "react-icons/sl";
 import Product from "../pages/Allproduct";
 import Homepage from "./../pages/homepage";
+import About from "../pages/Aboutss";
+import Ourblog from "./../pages/Ourblog";
 
 const Header = () => {
   const links = [
     { id: "1", name: "ALL PRODUCTS", url: "/Product" },
-    { id: "2", name: "ABOUT SEEDRA", url: "#" },
-    { id: "3", name: "OUR BLOG", url: "#" },
+    { id: "2", name: "ABOUT SEEDRA", url: "/About" },
+    { id: "3", name: "OUR BLOG", url: "/Ourblog" },
     { id: "4", name: "CONTACTS", url: "#" },
   ];
 

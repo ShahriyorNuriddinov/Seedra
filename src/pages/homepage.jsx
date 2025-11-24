@@ -5,6 +5,8 @@ import Product from "../components/product";
 import Filter from "../components/filter";
 import Products from "../components/Products";
 import Blog from "../components/Blog";
+import Grid from "../components/grid";
+import About from "../components/swiper";
 
 const Homepage = () => {
   return (
@@ -15,6 +17,8 @@ const Homepage = () => {
       <Filter />
       <Products />
       <Blog />
+      <Grid />
+      <About />
     </main>
   );
 };
