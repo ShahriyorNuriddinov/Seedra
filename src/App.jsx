@@ -1,25 +1,24 @@
-import React from "react";
-import Header from "./components/Header";
-import { Route, Router, Routes } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
-import Product from "./pages/Allproduct";
+
 import Homepage from "./pages/homepage";
+import Product from "./pages/Allproduct";
+import ProductDetail from "./pages/ProductDetail";
 import About from "./pages/Aboutss";
 import Ourblog from "./pages/Ourblog";
-import Products from "./pages/ProductDetail";
+
 const App = () => {
   return (
-    <div>
-      <Routes>
-        <Route path="" element={<Layout />}>
-          <Route path="/homepage" element={<Homepage />} />
-          <Route path="/product" element={<Product />} />
-          <Route path="/Product/:id" element={<Products/>} />
-          <Route path="/about" element={<About />} />
-          <Route path="/ourblog" element={<Ourblog />} />
-        </Route>
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Homepage />} />
+        <Route path="homepage" element={<Homepage />} />
+        <Route path="product" element={<Product />} />
+        <Route path="product/:id" element={<ProductDetail />} />
+        <Route path="about" element={<About />} />
+        <Route path="ourblog" element={<Ourblog />} />
+      </Route>
+    </Routes>
   );
 };
 

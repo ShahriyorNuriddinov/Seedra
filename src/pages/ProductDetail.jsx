@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import img from "../assets/svg/cart.svg";
 import star from "../assets/svg/star.svg";
 
-const Products = () => {
+const ProductDetail = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -60,4 +60,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default ProductDetail;
