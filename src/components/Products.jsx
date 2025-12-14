@@ -16,42 +16,35 @@ const Products = () => {
   }, []);
 
   return (
-    <div className="container mx-auto grid grid-cols-3 gap-6">
+    <div className="container mx-auto grid grid-cols-3 gap-6 py-10">
       {data.map((item) => (
         <Link
-          to={`/Product/${item.id}`}
+          to={`/product/${item.id}`}
           key={item.id}
           className="block"
         >
-          <div className="border-[#efefef] border-2 rounded-xl p-3 hover:shadow-lg transition">
-            
+          <div className="border-2 border-[#efefef] rounded-xl p-3 hover:shadow-lg transition">
             <img
               src={item.img}
-              className="w-full object-cover rounded-lg"
               alt={item.title}
+              className="w-full object-cover rounded-lg"
             />
 
             <div className="flex items-center mt-5">
               <img src={star} alt="star" />
-              <span className="font-normal text-sm leading-[178%] text-[#70737c]">
-                (123)
-              </span>
+              <span className="ml-2 text-sm text-[#70737c]">(123)</span>
             </div>
 
-            <h3 className="font-medium text-base leading-[156%] text-[#1f2533] mt-2">
+            <h3 className="font-medium text-base mt-2 text-[#1f2533]">
               {item.title}
             </h3>
 
-            <div className="flex items-center justify-between font-semibold text-[28px] text-[#1f2533] leading-[193%]">
-              <span>${item.price}</span>
-              <button
-                onClick={(e) => e.preventDefault()}
-                className="rounded-lg cursor-pointer flex items-center justify-center border border-solid border-[#efefef] p-2"
-              >
+            <div className="flex justify-between items-center mt-3 text-[#1f2533]">
+              <span className="text-2xl font-semibold">${item.price}</span>
+              <button className="border p-2 rounded-lg">
                 <img src={img} alt="cart" />
               </button>
             </div>
-
           </div>
         </Link>
       ))}
