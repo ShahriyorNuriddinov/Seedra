@@ -19,7 +19,7 @@ const Products = () => {
     <div className="container mx-auto grid grid-cols-3 gap-6">
       {data.map((item) => (
         <Link
-          to={`/product/${item.id}`}
+          to={`/Product/${item.id}`}
           key={item.id}
           className="block"
         >
