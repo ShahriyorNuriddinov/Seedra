@@ -1,61 +1,56 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-
-import img from "../assets/svg/cart.svg";
+import { useParams, Link } from "react-router-dom";
 import star from "../assets/svg/star.svg";
 
 const ProductDetail = () => {
-  const [data, setData] = useState([]);
+  const { id } = useParams(); // 👈 ENG MUHIM
+  const [item, setItem] = useState(null);
 
   useEffect(() => {
     axios
-      .get("https://6905b069ee3d0d14c13361c0.mockapi.io/s")
-      .then((res) => setData(res.data))
+      .get(`https://6905b069ee3d0d14c13361c0.mockapi.io/s/${id}`)
+      .then((res) => setItem(res.data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [id]);
+
+  if (!item) {
+    return <div className="text-center py-20">Loading...</div>;
+  }
 
   return (
-    <div className="container mx-auto grid grid-cols-3 gap-6">
-      {data.map((item) => (
-        <Link
-          to={`/product/${item.id}`}
-          key={item.id}
-          className="block"
-        >
-          <div className="border-[#efefef] border-2 rounded-xl p-3 hover:shadow-lg transition">
-            
-            <img
-              src={item.img}
-              className="w-full object-cover rounded-lg"
-              alt={item.title}
-            />
+    <div className="container mx-auto py-16">
 
-            <div className="flex items-center mt-5">
-              <img src={star} alt="star" />
-              <span className="font-normal text-sm leading-[178%] text-[#70737c]">
-                (123)
-              </span>
-            </div>
+      <Link to="/product" className="text-green-600 mb-6 inline-block">
+        ← Back to products
+      </Link>
 
-            <h3 className="font-medium text-base leading-[156%] text-[#1f2533] mt-2">
-              {item.title}
-            </h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <img
+          src={item.img}
+          alt={item.title}
+          className="w-full rounded-xl"
+        />
 
-            <div className="flex items-center justify-between font-semibold text-[28px] text-[#1f2533] leading-[193%]">
-              <span>${item.price}</span>
+        <div>
+          <h1 className="text-3xl font-semibold text-[#1f2533]">
+            {item.title}
+          </h1>
 
-              <button
-                onClick={(e) => e.preventDefault()}
-                className="rounded-lg cursor-pointer flex items-center justify-center border border-solid border-[#efefef] p-2"
-              >
-                <img src={img} alt="cart" />
-              </button>
-            </div>
-
+          <div className="flex items-center mt-4">
+            <img src={star} alt="" />
+            <span className="ml-2 text-sm text-[#70737c]">(123)</span>
           </div>
-        </Link>
-      ))}
+
+          <p className="text-3xl font-bold mt-6">
+            ${item.price}
+          </p>
+
+          <p className="mt-4 text-gray-600">
+            This is product detail page. Now it works correctly.
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
