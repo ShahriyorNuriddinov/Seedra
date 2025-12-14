@@ -18,11 +18,7 @@ const Products = () => {
   return (
     <div className="container mx-auto grid grid-cols-3 gap-6 py-10">
       {data.map((item) => (
-        <Link
-          to={`/product/${item.id}`}
-          key={item.id}
-          className="block"
-        >
+        <Link to={`/product/${item.id}`} key={item.id}>
           <div className="border-2 border-[#efefef] rounded-xl p-3 hover:shadow-lg transition">
             <img
               src={item.img}

@@ -6,15 +6,26 @@ import star from "../assets/svg/star.svg";
 const ProductDetail = () => {
   const { id } = useParams();
   const [item, setItem] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!id) return;
+
+    setLoading(true);
     axios
       .get(`https://6905b069ee3d0d14c13361c0.mockapi.io/s/${id}`)
-      .then((res) => setItem(res.data))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        setItem(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
   }, [id]);
 
-  if (!item) return <div className="text-center py-20">Loading...</div>;
+  if (loading) return <div className="text-center py-20">Loading...</div>;
+  if (!item) return <div className="text-center py-20">Product not found!</div>;
 
   return (
     <div className="container mx-auto py-16">
@@ -26,9 +37,7 @@ const ProductDetail = () => {
         <img src={item.img} alt={item.title} className="w-full rounded-xl" />
 
         <div>
-          <h1 className="text-3xl font-semibold text-[#1f2533]">
-            {item.title}
-          </h1>
+          <h1 className="text-3xl font-semibold text-[#1f2533]">{item.title}</h1>
 
           <div className="flex items-center mt-4">
             <img src={star} alt="" />
@@ -38,7 +47,7 @@ const ProductDetail = () => {
           <p className="text-3xl font-bold mt-6">${item.price}</p>
 
           <p className="mt-4 text-gray-600">
-            This is the product detail page. Now it works correctly.
+            This is the product detail page. It works perfectly.
           </p>
         </div>
       </div>
